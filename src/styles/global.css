@@ -95,9 +95,15 @@ a{color:inherit}
 .card{border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.04);padding:16px}
 .card h3{margin:0 0 8px;font-size:16px}
 .card p{margin:0;color:var(--muted);font-size:14px;line-height:1.55}
+.list{margin:10px 0 0; padding-left:18px; color:rgba(234,240,255,.78)}
+.list li{margin:6px 0; font-size:14px; line-height:1.45}
 .split{display:grid;grid-template-columns: 1fr 1fr;gap:18px;align-items:start}
 @media (max-width: 960px){.split{grid-template-columns:1fr;}}
 .form{border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.04);padding:18px;box-shadow: var(--shadow)}
+.contact-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 16px}
+@media (max-width: 560px){.contact-cards{grid-template-columns:1fr;}}
+.card.contact{display:block;text-decoration:none}
+.card.contact strong{display:block}
 .field{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
 label{font-size:13px;color:var(--muted)}
 input,textarea{

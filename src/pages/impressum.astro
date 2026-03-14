@@ -1,0 +1,72 @@
+---
+import "../styles/global.css";
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Impressum — Aiutomation</title>
+    <meta name="description" content="Impressum von Aiutomation." />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav-inner">
+        <a class="brand" href="/">
+          <div class="logo" aria-hidden="true"></div>
+          <span>Aiutomation</span>
+        </a>
+        <nav class="nav-links">
+          <a href="/leistungen">Leistungen</a>
+          <a href="/#prozess">Prozess</a>
+          <a class="btn primary" href="/#kontakt">Kontakt</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" style="padding-top:42px">
+        <div class="container">
+          <h1 class="h1" style="font-size:42px;margin-top:6px">Impressum</h1>
+          <p class="p">Die Angaben werden vor dem Messe‑Termin final ergänzt.</p>
+
+          <div class="card" style="margin-top:18px">
+            <h3>Anbieter</h3>
+            <p class="p small">
+              Aiutomation<br />
+              (Adresse folgt)<br />
+              Deutschland
+            </p>
+
+            <h3 style="margin-top:14px">Kontakt</h3>
+            <p class="p small">
+              E‑Mail: <a href="mailto:hello@aiutomation.de">hello@aiutomation.de</a>
+            </p>
+
+            <h3 style="margin-top:14px">Haftung</h3>
+            <p class="p small" style="opacity:.8">
+              Diese Website ist eine Projekt‑Landingpage. Inhalte ohne Gewähr.
+            </p>
+          </div>
+
+          <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+            <a class="btn" href="/">Zurück</a>
+            <a class="btn" href="/datenschutz">Datenschutz</a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="container">
+          <div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center">
+            <div>© {new Date().getFullYear()} Aiutomation</div>
+            <div style="display:flex;gap:14px;opacity:.75">
+              <a href="/impressum">Impressum</a>
+              <a href="/datenschutz">Datenschutz</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>

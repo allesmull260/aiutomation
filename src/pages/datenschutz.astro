@@ -1,0 +1,68 @@
+---
+import "../styles/global.css";
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Datenschutz — Aiutomation</title>
+    <meta name="description" content="Datenschutzhinweise von Aiutomation." />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav-inner">
+        <a class="brand" href="/">
+          <div class="logo" aria-hidden="true"></div>
+          <span>Aiutomation</span>
+        </a>
+        <nav class="nav-links">
+          <a href="/leistungen">Leistungen</a>
+          <a href="/#prozess">Prozess</a>
+          <a class="btn primary" href="/#kontakt">Kontakt</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" style="padding-top:42px">
+        <div class="container">
+          <h1 class="h1" style="font-size:42px;margin-top:6px">Datenschutz</h1>
+          <p class="p">Kurzfassung (wird vor dem Messe‑Termin finalisiert).</p>
+
+          <div class="grid3" style="grid-template-columns:1fr; margin-top:16px">
+            <div class="card">
+              <h3>Kontaktaufnahme</h3>
+              <p class="p small">Wenn du uns kontaktierst (z.B. per E‑Mail), verarbeiten wir deine Angaben zur Bearbeitung der Anfrage.</p>
+            </div>
+            <div class="card">
+              <h3>Hosting</h3>
+              <p class="p small">Die Website wird bei Vercel gehostet. Dabei können technische Log‑Daten anfallen (IP‑Adresse, Zeitpunkt, Request‑Daten).</p>
+            </div>
+            <div class="card">
+              <h3>Formular (Demo)</h3>
+              <p class="p small">Das Formular zeigt derzeit nur eine lokale Bestätigung im Browser (kein Versand). Für echten Versand binden wir n8n/CRM an.</p>
+            </div>
+          </div>
+
+          <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+            <a class="btn" href="/">Zurück</a>
+            <a class="btn" href="/impressum">Impressum</a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="container">
+          <div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center">
+            <div>© {new Date().getFullYear()} Aiutomation</div>
+            <div style="display:flex;gap:14px;opacity:.75">
+              <a href="/impressum">Impressum</a>
+              <a href="/datenschutz">Datenschutz</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
