@@ -1,0 +1,77 @@
+---
+import "../styles/global.css";
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Leistungen — Aiutomation</title>
+    <meta name="description" content="Beispiel-Leistungen: CRM-System aufsetzen, E-Mail Automatisierung, Lead Generierung." />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav-inner">
+        <a class="brand" href="/">
+          <div class="logo" aria-hidden="true"></div>
+          <span>Aiutomation</span>
+        </a>
+        <nav class="nav-links">
+          <a href="/leistungen" aria-current="page" style="opacity:1">Leistungen</a>
+          <a href="/#prozess">Prozess</a>
+          <a class="btn primary" href="/#kontakt">Kontakt</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" style="padding-top:42px">
+        <div class="container">
+          <div class="kicker"><span class="kicker-dot"></span><span>Leistungen (Testseite)</span></div>
+          <h1 class="h1" style="font-size:42px;margin-top:14px">Unsere Leistungen</h1>
+          <p class="sub" style="max-width:70ch">
+            Hier sind drei Beispiel‑Leistungen. Wenn du willst, machen wir daraus später echte Detailseiten je Leistung.
+          </p>
+
+          <div class="grid3" style="margin-top:22px">
+            <div class="card">
+              <h3>CRM System aufsetzen</h3>
+              <p>
+                Struktur, Pipelines, Felder, Datenimport und Automationen (z.B. Pipedrive), damit Sales sauber laufen.
+              </p>
+            </div>
+            <div class="card">
+              <h3>E‑Mail Automatisierung</h3>
+              <p>
+                Sequenzen, Trigger, Follow‑ups, Personalisierung und Tracking — inkl. Best‑Practices für Deliverability.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Lead Generierung</h3>
+              <p>
+                Firmenlisten → Recherche/Validierung → deduplizierte Leads → CRM/Sheet, inkl. Qualitätsregeln.
+              </p>
+            </div>
+          </div>
+
+          <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+            <a class="btn" href="/">Zurück zur Startseite</a>
+            <a class="btn primary" href="/#kontakt">Kontakt aufnehmen</a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="container">
+          <div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center">
+            <div>© {new Date().getFullYear()} Aiutomation</div>
+            <div style="display:flex;gap:14px;opacity:.75">
+              <span>Impressum (kommt)</span>
+              <span>Datenschutz (kommt)</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>

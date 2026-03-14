@@ -1,17 +1,156 @@
 ---
-
+import "../styles/global.css";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aiutomation — AI Automationen & Workflows</title>
+    <meta name="description" content="Aiutomation entwickelt AI Automationen & Workflows, die Leads generieren, Prozesse automatisieren und Sales beschleunigen." />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav-inner">
+        <a class="brand" href="#top">
+          <div class="logo" aria-hidden="true"></div>
+          <span>Aiutomation</span>
+        </a>
+        <nav class="nav-links">
+          <a href="/leistungen">Leistungen</a>
+          <a href="#prozess">Prozess</a>
+          <a class="btn primary" href="#kontakt">Kontakt</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="kicker"><span class="kicker-dot"></span><span>AI Automationen & Workflows · LeadGen-fokussiert</span></div>
+            <h1 class="h1">AI‑Workflows, die Leads liefern — ohne Chaos.</h1>
+            <p class="sub">
+              Wir bauen moderne Automationen (z.B. für CRM, E‑Mail, Sheets, Web‑Recherche),
+              damit dein Vertrieb konstant neue Chancen bekommt.
+            </p>
+            <div class="hero-actions">
+              <a class="btn primary" href="#kontakt">Kostenloses Erstgespräch</a>
+              <a class="btn" href="#leistungen">Was wir automatisieren</a>
+            </div>
+            <div class="badges" aria-label="Technologien">
+              <span class="badge">n8n</span>
+              <span class="badge">Pipedrive</span>
+              <span class="badge">Google Sheets</span>
+              <span class="badge">Lead-Research</span>
+              <span class="badge">Prompting</span>
+            </div>
+          </div>
+
+          <div class="hero-card" aria-label="3D Animation">
+            <canvas id="hero-canvas" class="hero-canvas"></canvas>
+            <div class="hero-overlay">
+              <strong>LeadGen‑Flow (Beispiel)</strong>
+              <span>Recherche → Qualifizierung → CRM → personalisierte Outreach‑Mails</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="leistungen" class="section">
+        <div class="container">
+          <h2 class="h2">Leistungen</h2>
+          <p class="p">Fokus: messbare Ergebnisse. Kein Tool‑Zirkus.</p>
+          <div class="grid3">
+            <div class="card">
+              <h3>LeadGen Automationen</h3>
+              <p>Von Firmenlisten bis zu qualifizierten Leads (E‑Mail/Telefon/Adresse) inkl. Deduping & CRM‑Import.</p>
+            </div>
+            <div class="card">
+              <h3>Sales & CRM Workflows</h3>
+              <p>Pipedrive‑Pipelines, Kontakt‑Hygiene, Trigger, Follow‑ups, Aufgaben — sauber & nachvollziehbar.</p>
+            </div>
+            <div class="card">
+              <h3>AI‑Assist / Content‑Ops</h3>
+              <p>Prompt‑Templates, Agent‑Flows, Standard‑Operating‑Procedures (SOPs) und Qualitätschecks.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="prozess" class="section">
+        <div class="container split">
+          <div>
+            <h2 class="h2">So arbeiten wir</h2>
+            <p class="p">Kurze Zyklen, klare KPIs. Wir liefern in Tagen, nicht in Monaten.</p>
+            <div class="grid3" style="grid-template-columns:1fr;">
+              <div class="card"><h3>1) Ziel & Daten</h3><p>Was ist der Lead? Welche Datenquellen? Welche Felder im CRM?</p></div>
+              <div class="card"><h3>2) Workflow bauen</h3><p>Automatisierung + Validierung + Logging, damit es verlässlich läuft.</p></div>
+              <div class="card"><h3>3) Skalieren</h3><p>Deduping, Rate‑Limits, Monitoring, Kosten‑Kontrolle und Iteration.</p></div>
+            </div>
+          </div>
+
+          <div id="kontakt" class="form">
+            <h2 class="h2" style="margin-bottom:8px">Kontakt</h2>
+            <p class="p" style="margin-bottom:14px">Schreib uns kurz, was du automatisieren willst. Wir melden uns.</p>
+
+            <form id="leadForm">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" placeholder="Max Mustermann" required />
+              </div>
+              <div class="field">
+                <label for="company">Firma</label>
+                <input id="company" name="company" placeholder="Beispiel GmbH" />
+              </div>
+              <div class="field">
+                <label for="email">E‑Mail</label>
+                <input id="email" name="email" type="email" placeholder="max@firma.de" required />
+              </div>
+              <div class="field">
+                <label for="msg">Worum geht’s?</label>
+                <textarea id="msg" name="msg" placeholder="Z.B. Leads aus Google Sheets → Pipedrive → personalisierte E-Mails" required></textarea>
+              </div>
+              <button class="btn primary" type="submit">Anfrage senden</button>
+              <p class="small" style="margin-top:10px">
+                Hinweis: Versand/Weiterleitung der Leads (E‑Mail/CRM) verbinden wir im nächsten Schritt.
+                Aktuell zeigt das Formular eine Bestätigung im Browser.
+              </p>
+              <p id="ok" class="small" style="display:none;color:rgba(57,217,138,.9);margin-top:10px">Danke! Deine Anfrage ist angekommen.</p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="container">
+          <div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center">
+            <div>© {new Date().getFullYear()} Aiutomation</div>
+            <div style="display:flex;gap:14px;opacity:.75">
+              <span>Impressum (kommt)</span>
+              <span>Datenschutz (kommt)</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script type="module">
+      import { mountHeroThree } from '../scripts/hero-three.ts';
+      const canvas = document.getElementById('hero-canvas');
+      const cleanup = mountHeroThree(canvas);
+
+      const form = document.getElementById('leadForm');
+      const ok = document.getElementById('ok');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        ok.style.display = 'block';
+        form.reset();
+        setTimeout(() => (ok.style.display = 'none'), 6000);
+      });
+
+      // Clean up on hot reload / navigation
+      window.addEventListener('beforeunload', () => cleanup && cleanup());
+    </script>
+  </body>
 </html>
