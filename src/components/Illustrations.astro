@@ -1,0 +1,102 @@
+---
+// Simple inline SVG illustrations (own, generic).
+const { name = 'flow' } = Astro.props;
+
+const svgs = {
+  flow: `
+  <svg viewBox="0 0 640 420" role="img" aria-label="Workflow Illustration" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#24D7FF" stop-opacity=".85"/>
+        <stop offset="1" stop-color="#7C5CFF" stop-opacity=".85"/>
+      </linearGradient>
+      <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="18"/>
+      </filter>
+    </defs>
+
+    <rect x="1" y="1" width="638" height="418" rx="24" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)"/>
+
+    <circle cx="140" cy="110" r="60" fill="url(#g1)" filter="url(#blur)" opacity=".55"/>
+    <circle cx="505" cy="320" r="70" fill="url(#g1)" filter="url(#blur)" opacity=".45"/>
+
+    <g fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2">
+      <path d="M140 140 C220 170, 250 170, 320 210"/>
+      <path d="M320 210 C390 250, 420 260, 500 290"/>
+    </g>
+
+    <g>
+      <rect x="70" y="70" width="140" height="90" rx="16" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.14)"/>
+      <text x="90" y="105" fill="rgba(234,240,255,0.92)" font-size="14" font-family="ui-sans-serif, system-ui">Daten</text>
+      <text x="90" y="130" fill="rgba(234,240,255,0.65)" font-size="12" font-family="ui-sans-serif, system-ui">Sheets · Web</text>
+    </g>
+
+    <g>
+      <rect x="250" y="170" width="160" height="100" rx="16" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.14)"/>
+      <text x="272" y="210" fill="rgba(234,240,255,0.92)" font-size="14" font-family="ui-sans-serif, system-ui">Validierung</text>
+      <text x="272" y="235" fill="rgba(234,240,255,0.65)" font-size="12" font-family="ui-sans-serif, system-ui">Regeln · Dedupe</text>
+    </g>
+
+    <g>
+      <rect x="440" y="270" width="150" height="95" rx="16" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.14)"/>
+      <text x="462" y="308" fill="rgba(234,240,255,0.92)" font-size="14" font-family="ui-sans-serif, system-ui">CRM</text>
+      <text x="462" y="333" fill="rgba(234,240,255,0.65)" font-size="12" font-family="ui-sans-serif, system-ui">Pipedrive</text>
+    </g>
+
+    <g>
+      <rect x="80" y="250" width="220" height="120" rx="18" fill="rgba(0,0,0,0.22)" stroke="rgba(255,255,255,0.10)"/>
+      <text x="104" y="287" fill="rgba(234,240,255,0.92)" font-size="14" font-family="ui-sans-serif, system-ui">Output</text>
+      <g fill="rgba(234,240,255,0.65)" font-size="12" font-family="ui-sans-serif, system-ui">
+        <text x="104" y="312">• Terminplanung + Maps‑Links</text>
+        <text x="104" y="334">• Sequenzen + Nacharbeit</text>
+        <text x="104" y="356">• Reports + Logs</text>
+      </g>
+    </g>
+  </svg>` ,
+
+  shield: `
+  <svg viewBox="0 0 640 420" role="img" aria-label="Guardrails Illustration" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g2" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0" stop-color="#39D98A" stop-opacity=".8"/>
+        <stop offset="1" stop-color="#24D7FF" stop-opacity=".8"/>
+      </linearGradient>
+      <filter id="blur2" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="16"/>
+      </filter>
+    </defs>
+
+    <rect x="1" y="1" width="638" height="418" rx="24" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)"/>
+
+    <circle cx="480" cy="140" r="80" fill="url(#g2)" filter="url(#blur2)" opacity=".45"/>
+
+    <g fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="2">
+      <path d="M320 90 L430 130 L410 260 C390 320 350 355 320 370 C290 355 250 320 230 260 L210 130 Z"/>
+    </g>
+    <path d="M320 110 L410 145 L394 255 C378 300 346 328 320 342 C294 328 262 300 246 255 L230 145 Z" fill="rgba(255,255,255,0.05)"/>
+    <path d="M280 230 L310 260 L370 195" fill="none" stroke="url(#g2)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <g>
+      <rect x="70" y="85" width="200" height="70" rx="16" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.14)"/>
+      <text x="92" y="125" fill="rgba(234,240,255,0.92)" font-size="14" font-family="ui-sans-serif, system-ui">Regeln</text>
+      <text x="92" y="147" fill="rgba(234,240,255,0.65)" font-size="12" font-family="ui-sans-serif, system-ui">Pflichtfelder · Skip‑Logic</text>
+    </g>
+
+    <g>
+      <rect x="70" y="175" width="200" height="70" rx="16" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.14)"/>
+      <text x="92" y="215" fill="rgba(234,240,255,0.92)" font-size="14" font-family="ui-sans-serif, system-ui">Kosten</text>
+      <text x="92" y="237" fill="rgba(234,240,255,0.65)" font-size="12" font-family="ui-sans-serif, system-ui">Limits · Monitoring</text>
+    </g>
+
+    <g>
+      <rect x="70" y="265" width="200" height="70" rx="16" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.14)"/>
+      <text x="92" y="305" fill="rgba(234,240,255,0.92)" font-size="14" font-family="ui-sans-serif, system-ui">Sicherheit</text>
+      <text x="92" y="327" fill="rgba(234,240,255,0.65)" font-size="12" font-family="ui-sans-serif, system-ui">Secrets · Rotation</text>
+    </g>
+  </svg>`
+};
+
+const svg = svgs[name] || svgs.flow;
+---
+
+<div class="illus" set:html={svg} />

@@ -92,11 +92,18 @@ a{color:inherit}
 .p{color:var(--muted);line-height:1.65;margin:0}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
 @media (max-width: 960px){.grid3{grid-template-columns:1fr;}}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+@media (max-width: 960px){.grid2{grid-template-columns:1fr;}}
 .card{border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.04);padding:16px}
 .card h3{margin:0 0 8px;font-size:16px}
 .card p{margin:0;color:var(--muted);font-size:14px;line-height:1.55}
 .list{margin:10px 0 0; padding-left:18px; color:rgba(234,240,255,.78)}
 .list li{margin:6px 0; font-size:14px; line-height:1.45}
+.feature{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:center}
+.feature.alt{grid-template-columns:.9fr 1.1fr}
+.feature.alt .feature-visual{order:-1}
+@media (max-width: 960px){.feature,.feature.alt{grid-template-columns:1fr}.feature.alt .feature-visual{order:0}}
+.illus{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.03)}
 .split{display:grid;grid-template-columns: 1fr 1fr;gap:18px;align-items:start}
 @media (max-width: 960px){.split{grid-template-columns:1fr;}}
 .form{border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.04);padding:18px;box-shadow: var(--shadow)}
