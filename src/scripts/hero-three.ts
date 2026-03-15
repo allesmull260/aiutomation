@@ -75,6 +75,24 @@ export function mountHeroThree(canvas: HTMLCanvasElement) {
   const glow = new THREE.Mesh(glowGeo, glowMat);
   scene.add(glow);
 
+  // Orbit rings (adds a more "premium" 3D feel without heavy postprocessing)
+  const ringGeo = new THREE.TorusGeometry(1.05, 0.02, 16, 160);
+  const ringMat = new THREE.MeshBasicMaterial({ color: 0x24d7ff, transparent: true, opacity: 0.18 });
+  const ring1 = new THREE.Mesh(ringGeo, ringMat);
+  ring1.rotation.set(0.6, 0.2, 0.1);
+  group.add(ring1);
+
+  const ringMat2 = new THREE.MeshBasicMaterial({ color: 0x7c5cff, transparent: true, opacity: 0.14 });
+  const ring2 = new THREE.Mesh(ringGeo, ringMat2);
+  ring2.rotation.set(-0.3, 0.9, 0.2);
+  group.add(ring2);
+
+  // Pulsing point light
+  const pulse = new THREE.PointLight(0x24d7ff, 0.55, 10);
+  pulse.position.set(0.2, 0.4, 1.8);
+  scene.add(pulse);
+
+
   let raf = 0;
   let alive = true;
 
@@ -102,19 +120,33 @@ export function mountHeroThree(canvas: HTMLCanvasElement) {
   window.addEventListener('pointermove', onMove, { passive: true });
 
   const clock = new THREE.Clock();
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   const tick = () => {
     if (!alive) return;
     const t = clock.getElapsedTime();
-    group.rotation.y = t * 0.22 + mx * 0.18;
-    group.rotation.x = t * 0.08 + -my * 0.12;
+
+    const speed = prefersReduced ? 0.0 : 1.0;
+    group.rotation.y = t * 0.22 * speed + mx * 0.18;
+    group.rotation.x = t * 0.08 * speed + -my * 0.12;
+
+    // Orbit rings
+    ring1.rotation.z += 0.004 * speed;
+    ring2.rotation.z -= 0.003 * speed;
+
+    // Subtle line shimmer
+    (lines.material as THREE.LineBasicMaterial).opacity = 0.14 + (Math.sin(t * 0.9) * 0.5 + 0.5) * 0.12;
 
     // Gentle breathing motion
     for (let i = 0; i < nodes.length; i++) {
       const n = nodes[i];
-      n.rotation.x += 0.004;
-      n.rotation.y += 0.003;
-      n.position.y += Math.sin(t * 0.9 + i) * 0.0006;
+      n.rotation.x += 0.004 * (0.2 + 0.8 * speed);
+      n.rotation.y += 0.003 * (0.2 + 0.8 * speed);
+      n.position.y += Math.sin(t * 0.9 + i) * 0.0006 * speed;
     }
+
+    // Light pulse
+    pulse.intensity = 0.45 + (Math.sin(t * 1.1) * 0.5 + 0.5) * 0.35;
 
     renderer.render(scene, camera);
     raf = requestAnimationFrame(tick);
@@ -130,12 +162,17 @@ export function mountHeroThree(canvas: HTMLCanvasElement) {
     lineGeo.dispose();
     nodeGeo.dispose();
     glowGeo.dispose();
+    ringGeo.dispose();
     // @ts-ignore
     nodeMat.dispose?.();
     // @ts-ignore
     lineMat.dispose?.();
     // @ts-ignore
     glowMat.dispose?.();
+    // @ts-ignore
+    ringMat.dispose?.();
+    // @ts-ignore
+    ringMat2.dispose?.();
   };
 
   return cleanup;

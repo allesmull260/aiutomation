@@ -76,6 +76,28 @@ a{color:inherit}
   overflow:hidden;
   min-height:360px;
 }
+.hero-card::before{
+  content:"";
+  position:absolute;
+  inset:-20%;
+  background:
+    radial-gradient(closest-side at 30% 30%, rgba(36,215,255,.18), transparent 60%),
+    radial-gradient(closest-side at 70% 70%, rgba(124,92,255,.16), transparent 60%);
+  filter: blur(10px);
+  opacity:.55;
+  transform: translate3d(0,0,0);
+  animation: floatGlow 10s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes floatGlow{
+  0%{transform: translate3d(-2%, -1%, 0) scale(1)}
+  50%{transform: translate3d(2%, 1%, 0) scale(1.03)}
+  100%{transform: translate3d(-2%, -1%, 0) scale(1)}
+}
+@media (prefers-reduced-motion: reduce){
+  .hero-card::before{animation:none;}
+}
+
 .hero-canvas{position:absolute;inset:0;}
 .hero-overlay{
   position:absolute;left:18px;bottom:18px;right:18px;
