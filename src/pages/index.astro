@@ -257,7 +257,51 @@ import Illustration from "../components/Illustrations.astro";
         setTimeout(() => (ok.style.display = 'none'), 6000);
       });
 
-      window.addEventListener('beforeunload', () => cleanup && cleanup());
+      // Scroll reveal
+      const revealEls = Array.from(document.querySelectorAll('.card, .illus'));
+      revealEls.forEach((el) => el.classList.add('reveal'));
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          }
+        },
+        { threshold: 0.15 }
+      );
+      revealEls.forEach((el) => io.observe(el));
+
+      // Card tilt (desktop)
+      const tiltEls = Array.from(document.querySelectorAll('.card'));
+      tiltEls.forEach((el) => el.classList.add('tilt'));
+      const onMove = (e) => {
+        const el = e.currentTarget;
+        const r = el.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width;
+        const py = (e.clientY - r.top) / r.height;
+        const ry = (px - 0.5) * 10;
+        const rx = -(py - 0.5) * 8;
+        el.style.setProperty('--rx', rx.toFixed(2) + 'deg');
+        el.style.setProperty('--ry', ry.toFixed(2) + 'deg');
+        el.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+        el.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+      };
+      const onLeave = (e) => {
+        const el = e.currentTarget;
+        el.style.setProperty('--rx', '0deg');
+        el.style.setProperty('--ry', '0deg');
+      };
+      tiltEls.forEach((el) => {
+        el.addEventListener('pointermove', onMove, { passive: true });
+        el.addEventListener('pointerleave', onLeave, { passive: true });
+      });
+
+      window.addEventListener('beforeunload', () => {
+        cleanup && cleanup();
+        io.disconnect();
+      });
     </script>
   </body>
 </html>

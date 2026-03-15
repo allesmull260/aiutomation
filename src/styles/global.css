@@ -106,7 +106,7 @@ a{color:inherit}
 @media (max-width: 960px){.grid3{grid-template-columns:1fr;}}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
 @media (max-width: 960px){.grid2{grid-template-columns:1fr;}}
-.card{border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.04);padding:16px}
+.card{border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.04);padding:16px;transform-style:preserve-3d; position:relative}
 .card h3{margin:0 0 8px;font-size:16px}
 .card p{margin:0;color:var(--muted);font-size:14px;line-height:1.55}
 .list{margin:10px 0 0; padding-left:18px; color:rgba(234,240,255,.78)}
@@ -140,3 +140,29 @@ input:focus,textarea:focus{border-color:rgba(36,215,255,.5);box-shadow:0 0 0 4px
 .footer{padding:28px 0 48px;border-top:1px solid var(--line);color:rgba(234,240,255,.6)}
 .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 .badge{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:rgba(234,240,255,.75)}
+
+/* Micro-interactions */
+.reveal{opacity:0; transform: translateY(14px); filter: blur(2px);}
+.reveal.in{opacity:1; transform:none; filter:none; transition: opacity .6s ease, transform .6s ease, filter .6s ease;}
+
+.tilt{perspective:900px;}
+.tilt > *{transform: translateZ(0.01px);} /* keep GPU */
+.tilt:hover{border-color: rgba(36,215,255,.22);}
+.tilt{
+  --rx: 0deg;
+  --ry: 0deg;
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform .18s ease, border-color .18s ease;
+}
+.tilt::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:16px;
+  pointer-events:none;
+  background: radial-gradient(500px 260px at var(--mx,50%) var(--my,50%), rgba(124,92,255,.18), transparent 60%);
+  opacity:0;
+  transition: opacity .18s ease;
+}
+.tilt:hover::after{opacity:1;}
+
