@@ -87,7 +87,19 @@ a{color:inherit}
 }
 .hero-overlay strong{display:block;font-size:14px}
 .hero-overlay span{display:block;color:var(--muted);font-size:13px;margin-top:4px}
-.section{padding:52px 0}
+.section{padding:52px 0; position:relative}
+/* subtle background wash per section to avoid harsh gradient seams */
+.section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background: radial-gradient(900px 520px at 65% 0%, rgba(124,92,255,.10), transparent 55%),
+              radial-gradient(700px 420px at 10% 50%, rgba(36,215,255,.08), transparent 55%);
+  opacity:.85;
+}
+.section > .container{position:relative}
+
 .h2{font-size:28px;margin:0 0 10px}
 .p{color:var(--muted);line-height:1.65;margin:0}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
